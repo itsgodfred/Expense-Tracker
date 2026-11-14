@@ -15,7 +15,7 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin: "https://expense-tracker-frontend-f2tp.onrender.com"
+    origin: "https://expense-tracker-frontend-f2tp.onrender.com",
     credentials: true,
   })
 );
