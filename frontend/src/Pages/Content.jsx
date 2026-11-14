@@ -12,7 +12,7 @@ import { useMutation } from "@tanstack/react-query";
 
 async function loguser() {
   const API_URL = import.meta.env.VITE_API_URL;
-  const res = await fetch(`${API_URL}api/auth/logout`, {
+  const res = await fetch(`${API_URL}/api/auth/logout`, {
     method: "POST",
     headers: {
       "Content-type": "application/json; charset=UTF-8",
