@@ -6,6 +6,8 @@ import { protect } from "../middleware/auth.js";
 
 const router = express.Router();
 
+const isProduction = process.env.NODE_ENV === "production";
+
 const cookieOptions = {
   httpOnly: true,
   secure: process.env.NODE_ENV === "production",
