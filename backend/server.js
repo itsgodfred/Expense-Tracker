@@ -15,11 +15,7 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "http://192.168.1.90:5173",
-      "http://192.168.56.1:5173",
-    ],
+    origin: "https://expense-tracker-frontend-f2tp.onrender.com"
     credentials: true,
   })
 );
