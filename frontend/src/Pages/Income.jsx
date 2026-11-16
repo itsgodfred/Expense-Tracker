@@ -7,15 +7,22 @@ import BasicTable from "../Subpages/Basictable";
 
 async function fetchincome() {
   const offset = localStorage.getItem("offset");
+  const token = localStorage.getItem("accesstoken");
+  const headers = {
+    "Content-Type": "application/json",
+    ...(token && { Authorization: `Bearer ${token}` }),
+  };
   const API_URL = import.meta.env.VITE_API_URL;
   const [chart, income, utente] = await Promise.all([
     fetch(`${API_URL}/api/transactions`, {
+      headers,
       credentials: "include",
     }),
     fetch(`${API_URL}/api/transactions?limit=20&offset=${offset}`, {
+      headers,
       credentials: "include",
     }),
-    fetch(`${API_URL}/api/auth/me`, { credentials: "include" }),
+    fetch(`${API_URL}/api/auth/me`, { headers, credentials: "include" }),
   ]);
 
   if (!chart.ok) {
