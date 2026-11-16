@@ -59,6 +59,7 @@ function Content() {
     mutationFn: loguser,
     onSuccess: () => {
       queryClient.clear();
+      localStorage.clear;
       navigate("/login");
     },
   });
