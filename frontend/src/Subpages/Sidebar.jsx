@@ -118,7 +118,7 @@ function Sidebar(prop) {
           </li>
         </ol>
       </div>
-      <div className="flex justify-between items-end py-4 text-white mb-8">
+      <div className="flex justify-between items-end py-4 text-white mb-10">
         <div className="w-full flex items-center justify-between">
           <div className="flex items-center gap-2 cursor-pointer">
             <Avatar>
