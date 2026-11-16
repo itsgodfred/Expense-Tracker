@@ -11,12 +11,18 @@ import { navContext } from "../App";
 import { toast, Toaster } from "react-hot-toast";
 
 async function fetchdata() {
+  const token = localStorage.getItem("accesstoken");
+  const headers = {
+    "Content-Type": "application/json",
+    ...(token && { Authorization: `Bearer ${token}` }),
+  };
   const API_URL = import.meta.env.VITE_API_URL;
   const [res, utente] = await Promise.all([
     fetch(`${API_URL}/api/dashboard/summary`, {
+      headers,
       credentials: "include",
     }),
-    fetch(`${API_URL}/api/auth/me`, { credentials: "include" }),
+    fetch(`${API_URL}/api/auth/me`, { headers, credentials: "include" }),
   ]);
 
   if (!res.ok) {
