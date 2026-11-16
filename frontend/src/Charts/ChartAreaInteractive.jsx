@@ -29,10 +29,12 @@ import { useQuery } from "@tanstack/react-query";
 
 async function fetchincome() {
   const API_URL = import.meta.env.VITE_API_URL;
+  const token = localStorage.getItem("accesstoken");
   const chart = await fetch(`${API_URL}/api/transactions`, {
     method: "GET",
     headers: {
       "Content-type": "application/json; charset=UTF-8",
+      ...(token && { Authorization: `Bearer ${token}` }),
     },
     credentials: "include",
   });
