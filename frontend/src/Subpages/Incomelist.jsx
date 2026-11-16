@@ -8,10 +8,12 @@ import Skeleton from "./Skeleton";
 
 async function incomedata() {
   const API_URL = import.meta.env.VITE_API_URL;
+  const token = localStorage.getItem("accesstoken");
   const res = await fetch(`${API_URL}/api/transactions?type=income&limit=5`, {
     method: "GET",
     headers: {
       "Content-type": "application/json; charset=UTF-8",
+      ...(token && { Authorization: `Bearer ${token}` }),
     },
     credentials: "include",
   });
