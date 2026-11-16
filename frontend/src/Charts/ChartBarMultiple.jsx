@@ -19,10 +19,12 @@ import {
 
 async function fetchbardata() {
   const API_URL = import.meta.env.VITE_API_URL;
+  const token = localStorage.getItem("accesstoken");
   const res = await fetch(`${API_URL}/api/dashboard/monthly-trend`, {
     method: "GET",
     headers: {
       "Content-type": "application/json; charset=UTF-8",
+      ...(token && { Authorization: `Bearer ${token}` }),
     },
     credentials: "include",
   });
