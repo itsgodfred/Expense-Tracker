@@ -38,7 +38,13 @@ import { toast, Toaster } from "react-hot-toast";
 
 const API_URL = import.meta.env.VITE_API_URL;
 async function fetchCategory() {
+  const token = localStorage.getItem("accesstoken");
+  const headers = {
+    "Content-Type": "application/json",
+    ...(token && { Authorization: `Bearer ${token}` }),
+  };
   const res = await fetch(`${API_URL}/api/category/`, {
+    headers,
     credentials: "include",
   });
   if (!res.ok) {
@@ -51,11 +57,14 @@ async function fetchCategory() {
 }
 
 async function addTransaction(newPost) {
+  const token = localStorage.getItem("accesstoken");
+
   const res = await fetch(`${API_URL}/api/transactions/`, {
     method: "POST",
     body: JSON.stringify(newPost),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
+      ...(token && { Authorization: `Bearer ${token}` }),
     },
     credentials: "include",
   });
