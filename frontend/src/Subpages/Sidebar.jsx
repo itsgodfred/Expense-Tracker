@@ -16,10 +16,12 @@ import { useMutation } from "@tanstack/react-query";
 
 async function loguser() {
   const API_URL = import.meta.env.VITE_API_URL;
+  const token = localStorage.getItem("accesstoken");
   const res = await fetch(`${API_URL}/api/auth/logout`, {
     method: "POST",
     headers: {
       "Content-type": "application/json; charset=UTF-8",
+      ...(token && { Authorization: `Bearer ${token}` }),
     },
     credentials: "include",
   });
