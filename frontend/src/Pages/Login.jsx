@@ -28,6 +28,7 @@ async function loguser(newPost) {
 
   const data = await res.json();
   console.log(data);
+  localStorage.setItem("accesstoken", data);
 
   if (!res.ok) {
     const errorMessage = data?.message;
