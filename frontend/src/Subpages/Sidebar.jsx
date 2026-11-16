@@ -89,7 +89,7 @@ function Sidebar(prop) {
 
   return (
     <div
-      className={`z-90 grid grid-rows-3 h-full w-[75%] bg-[#1F4FD1] py-4 px-6 top-0 -right-[100%] fixed z-50 rounded-l-[10px] 
+      className={`z-90 grid grid-rows-3 h-screen w-[75%] bg-[#1F4FD1] py-4 px-6 top-0 -right-[100%] fixed z-50 rounded-l-[10px] 
     transition-all duration-300 ease-in-out
     ${navstate ? "translate-x-full " : "right-0 "}`}
     >
@@ -118,7 +118,7 @@ function Sidebar(prop) {
           </li>
         </ol>
       </div>
-      <div className="flex justify-between items-end py-4 text-white">
+      <div className="flex justify-between items-end py-4 text-white mb-4">
         <div className="w-full flex items-center justify-between">
           <div className="flex items-center gap-2 cursor-pointer">
             <Avatar>
