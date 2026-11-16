@@ -93,7 +93,6 @@ export const me = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
-  res.cookie("token", "", { ...cookieOptions, maxAge: 1 });
   res.json({ message: "Logged out successfully" });
 };
 
