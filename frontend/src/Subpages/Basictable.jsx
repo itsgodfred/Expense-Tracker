@@ -7,8 +7,14 @@ import { Search, HelpCircle } from "lucide-react";
 import Skeleton from "../Subpages/Skeleton";
 
 async function fetchlist() {
+  const token = localStorage.getItem("accesstoken");
+  const headers = {
+    "Content-Type": "application/json",
+    ...(token && { Authorization: `Bearer ${token}` }),
+  };
   const API_URL = import.meta.env.VITE_API_URL;
   const res = await fetch(`${API_URL}/api/transactions?limit=100`, {
+    headers,
     credentials: "include",
   });
   if (!res.ok) {
