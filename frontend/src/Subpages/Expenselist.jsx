@@ -6,11 +6,14 @@ import { useQuery } from "@tanstack/react-query";
 import { iconMap } from "./Categoryicons";
 
 async function expensedata() {
+  const token = localStorage.getItem("accesstoken");
+
   const API_URL = import.meta.env.VITE_API_URL;
   const res = await fetch(`${API_URL}/api/transactions?type=expense&limit=5`, {
     method: "GET",
     headers: {
       "Content-type": "application/json; charset=UTF-8",
+      ...(token && { Authorization: `Bearer ${token}` }),
     },
     credentials: "include",
   });
