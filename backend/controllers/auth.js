@@ -34,6 +34,10 @@ export const register = async (req, res) => {
     return res.status(400).json({ message: "Password is too short" });
   }
 
+  if (!email.contains("@")) {
+    return res.status(400).json({ message: "Wrong email" });
+  }
+
   const userExists = await pool.query("SELECT * FROM users WHERE email = $1", [
     email,
   ]);
