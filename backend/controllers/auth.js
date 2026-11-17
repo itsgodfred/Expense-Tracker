@@ -34,7 +34,7 @@ export const register = async (req, res) => {
     return res.status(400).json({ message: "Password is too short" });
   }
 
-  if (!email.contains("@")) {
+  if (!email.includes("@")) {
     return res.status(400).json({ message: "Wrong email" });
   }
 
