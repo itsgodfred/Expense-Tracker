@@ -56,7 +56,7 @@ export const register = async (req, res) => {
   const token = generateToken(newUser.rows[0].id);
 
 
-  return res.json(token);
+   res.json(token);
 };
 
 export const login = async (req, res) => {
